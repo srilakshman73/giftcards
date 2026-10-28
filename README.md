@@ -1,7 +1,7 @@
-# A Rose Just for You 🌹
-### Premium Romantic Digital Gift Card & Love Letter Experience
+# For My Chella Kutty 💗 | Dedicated to Harishma
+### My Panda Kutty 🐼, Chella Kutty ❤️, Bujji Thango 💗
 
-A luxury romantic digital gift card website inspired by hand-painted botanical art, luxury stationery, and delicate love letters. Crafted with care to make someone truly special feel appreciated, adored, and cherished.
+A luxury romantic digital gift card website inspired by hand-painted botanical art, luxury stationery, and delicate love letters. Crafted with lots of love especially for **Harishma**.
 
 ---
 
@@ -9,7 +9,7 @@ A luxury romantic digital gift card website inspired by hand-painted botanical a
 
 - **Live URL**: [https://nimble-tundra-9w5lf0r.tmp.now](https://nimble-tundra-9w5lf0r.tmp.now)
 - **Claim on Vercel**: [Claim this deployment to your personal Vercel dashboard](https://vercel.com/claim-deployment?code=eec2811b-a22e-4e88-8f7d-ed47f10dc4fa)
-- **Song (Only)**: [Adiye (2NrpwkyoTrI)](https://youtu.be/2NrpwkyoTrI?si=1feIsKT3qsvdPRXZ)
+- **Song**: [Adiye (2NrpwkyoTrI)](https://youtu.be/2NrpwkyoTrI?si=1feIsKT3qsvdPRXZ)
 - **GitHub Repository**: [https://github.com/srilakshman73/giftcard](https://github.com/srilakshman73/giftcard)
 - **Branch**: `main`
 
@@ -18,28 +18,25 @@ A luxury romantic digital gift card website inspired by hand-painted botanical a
 ## ✨ Features & Experiences
 
 1. **The Opening Screen Surprise 💌**
-   - Heading: *“A Little Something, Just for You…”*
-   - Subtitle: *“Some feelings are too beautiful to fit into ordinary words. So, I made this little world just for you.”*
-   - 3D luxury blush-pink envelope tied with satin ribbons and embossed gold wax seal.
-   - Interactive opening animation: untying ribbons, unfolding flap in 3D, and releasing a burst of floating rose petals and glowing hearts.
+   - Heading: *“A Little Surprise for My Panda Kutty 🐼”*
+   - Subtitle: *“Some feelings are too beautiful to fit into ordinary words. So, I made this little rose-pink world just for you, Harishma.”*
+   - 3D luxury blush-pink envelope with wax seal stamped *“Harishma”* and tied with satin ribbons.
+   - Button: *“Open Your Surprise, Chella Kutty ❤️”*
+   - Interactive opening animation releasing a shower of floating rose petals and glowing hearts.
 
 2. **Luxury Romantic Greeting Card 📜**
-   - Hand-drawn botanical rose motifs, Victorian corner filigree, and layered deckle-edge paper textures.
-   - Genuine, heartfelt romantic message:
-     - *“To My Favorite Person ❤️”*
-     - *“My favorite part of an ordinary day is the thought of you...”*
-     - Highlight quote: *“You are someone truly special to me. And if this little card makes you smile, then it has already done its job. 🌹”*
-     - Sincere sign-off: *“With love, Someone who thinks you're wonderful. ❤️”*
+   - Centered, full-width romantic love letter addressed to:
+     **“My Chella Kutty, My Panda Kutty, My Bujji Thango ❤️🐼”**
+   - Drop-cap styling for heartfelt paragraphs.
+   - Highlight quote: *“You are my sweetest little Panda, and I hope this gift makes your day a little brighter. 🐼🌹”*
+   - Sign-off: *“With lots of love, Your favourite person. 💗🌹”*
 
 3. **Interactive Romantic Experiences 💫**
-   - **Romantic YouTube Background Music Player**: Official YouTube IFrame Player API integration for the romantic song *“Adiye”* (ID: `2NrpwkyoTrI`). Features play, pause, mute/unmute, animated equalizer bars, responsive glassmorphism controls, zero autoplay (starts on user click), direct YouTube link, and an automatic gentle acoustic lullaby fallback if YouTube embedding restrictions apply.
-   - **Floating Rose Petals**: GPU-accelerated canvas animation with gentle natural drift, swaying leaves, and reduced-motion support.
-   - **Web Audio API Romantic Music Box**: Gentle, warm celesta and piano arpeggios synthesized directly in-browser. Zero external dependencies, never fails or blocks, and respects autoplay policies with an elegant top-right toggle.
-   - **Send a Little Love ❤️**: Interactive button with heart burst particle effects, love counter, and sweet confirmation toasts.
-   - **Hidden Love Note (“There’s one more thing…”)**: Interactive miniature parchment letter that unfolds smoothly into a handwritten whisper.
-   - **Memory Gallery Scrapbook**: Polaroid-style photo keepsakes with botanical illustrations, tape strips, and photo upload support.
-   - **Final Surprise Envelope**: Closed rose envelope at page footer that reveals: *“No matter how ordinary today may be, I hope this little gift makes it a little more beautiful. 🌷”*
-   - **Replay Surprise & Share**: One-click surprise replay, live in-app personalization modal, and shareable encoded URL generation.
+   - **Romantic YouTube Background Music Player**: Official YouTube IFrame Player API for the romantic song *“Adiye”* (ID: `2NrpwkyoTrI`). Features play, pause, mute/unmute, animated equalizer bars, responsive glassmorphism controls, zero autoplay (starts on user click).
+   - **Floating Rose Petals**: GPU-accelerated canvas animation with gentle natural drift and reduced-motion support.
+   - **Send a Little Love ❤️**: Interactive button with heart burst particles and sweet personal affirmations for Harishma.
+   - **Hidden Love Note**: *“One More Little Note, Bujji Thango 💌”* unfolding into a private handwritten letter.
+   - **Final Surprise Envelope**: Closed rose envelope at page footer that reveals a warm blessing for Chella Kutty.
 
 ---
 
