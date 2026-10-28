@@ -149,12 +149,12 @@ export const GiftEnvelope: React.FC<GiftEnvelopeProps> = ({ onOpen, isOpen }) =>
           {/* Centerpiece Wax Seal with Rose Monogram */}
           <div className="relative z-20 flex flex-col items-center">
             <LuxuryWaxSeal
-              label="For You"
+              label="Harishma"
               onClick={handleOpenClick}
               pulsing={!isAnimating && !isOpen}
             />
             <span className="mt-3 text-xs tracking-wider uppercase font-serif text-cherry-DEFAULT/80 font-semibold drop-shadow-sm flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-champagne-dark" /> Sealed with Affection
+              <Sparkles className="w-3 h-3 text-champagne-dark" /> Sealed Especially For Harishma
             </span>
           </div>
         </div>
@@ -173,11 +173,11 @@ export const GiftEnvelope: React.FC<GiftEnvelopeProps> = ({ onOpen, isOpen }) =>
           </span>
 
           <Heart className="w-5 h-5 text-rose-200 fill-rose-300 group-hover:scale-110 transition-transform animate-pulse" />
-          <span className="tracking-wide">Open Your Little Surprise 💌</span>
+          <span className="tracking-wide">Open Your Surprise, Chella Kutty ❤️</span>
         </button>
 
         <p className="text-xs sm:text-sm text-cherry/70 font-cormorant italic tracking-wide">
-          Tap the wax seal or button above to unveil your card
+          Tap the wax seal or button above to unveil your love letter
         </p>
       </div>
     </div>

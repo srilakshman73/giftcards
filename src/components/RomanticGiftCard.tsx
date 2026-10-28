@@ -14,12 +14,12 @@ export const RomanticGiftCard: React.FC<RomanticGiftCardProps> = ({ config }) =>
   const [isHeartBumping, setIsHeartBumping] = useState(false);
 
   const sweetMessages = [
-    'Your smile just lit up this little universe ✨',
-    'A warm hug wrapped in gentle words 💕',
-    'A little extra happiness sent your way 🌹',
-    'You are truly, genuinely cherished 🌸',
-    'May your day be as gentle as your heart 🕊️',
-    'Sending endless warmth across every mile 💫',
+    'A warm hug for my Panda Kutty 🐼💕',
+    'Chella Kutty, your smile lights up my whole world ✨',
+    'Bujji Thango, you are truly cherished 🌸',
+    'A shower of love especially for Harishma 🌹',
+    'Sending endless love to my sweetest Panda ❤️',
+    'May your day be as gentle as your sweet heart, Chella Kutty 🕊️',
   ];
 
   const handleSendLove = (e: React.MouseEvent<HTMLButtonElement>) => {

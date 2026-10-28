@@ -50,10 +50,10 @@ export const FinalSurprise: React.FC<FinalSurpriseProps> = ({
 
             <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-8 bg-rose-400/25 border-y border-champagne/40" />
 
-            <LuxuryWaxSeal label="Open Wish" onClick={handleOpen} pulsing />
+            <LuxuryWaxSeal label="Chella Kutty" onClick={handleOpen} pulsing />
             
             <p className="mt-4 font-serif text-xs uppercase tracking-widest text-cherry/80 font-semibold">
-              Tap the seal to reveal your final wish 🌷
+              Tap the seal to reveal your final wish, Chella Kutty 🌷
             </p>
           </div>
         ) : (
@@ -120,7 +120,7 @@ export const FinalSurprise: React.FC<FinalSurpriseProps> = ({
         {/* Footer Credit & Warm Quote */}
         <footer className="mt-12 text-center text-xs text-cherry/60 font-cormorant italic tracking-wide">
           <p className="flex items-center justify-center gap-1.5">
-            Crafted with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" /> and rose petals — A Rose Just for You.
+            Crafted with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" /> especially for Harishma — My Chella Kutty, My Panda Kutty 🐼❤️
           </p>
         </footer>
       </div>

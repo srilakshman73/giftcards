@@ -21,10 +21,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ config, isOpen, onOpen
       </div>
 
       {/* Top Pre-title Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-champagne/40 text-xs sm:text-sm font-serif tracking-widest text-cherry-light uppercase mb-4 shadow-sm">
-        <span>A Rose Just For You</span>
-        <span className="text-rose-400">✦</span>
-        <span>Dedicated to {config.recipientName}</span>
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-champagne/50 text-xs sm:text-sm font-serif tracking-widest text-cherry-light uppercase mb-4 shadow-sm">
+        <span className="text-rose-500 font-semibold">For My Chella Kutty 💗</span>
+        <span className="text-rose-300">✦</span>
+        <span>Made with love, especially for Harishma</span>
       </div>
 
       {/* Main Romantic Heading */}

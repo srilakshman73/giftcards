@@ -1,64 +1,36 @@
 import { GiftCardConfig } from './types';
 
 export const DEFAULT_CONFIG: GiftCardConfig = {
-  recipientName: 'My Favorite Person',
-  senderName: 'Someone who thinks you’re wonderful',
-  personalizedTitle: 'A Rose Just for You',
-  cardOpeningHeading: 'A Little Something, Just for You…',
-  cardOpeningSubtitle: 'Some feelings are too beautiful to fit into ordinary words. So, I made this little world just for you.',
-  mainGreeting: 'To My Favorite Person ❤️',
+  recipientName: 'Harishma',
+  senderName: 'Your favourite person. 💗🌹',
+  personalizedTitle: 'A Little Surprise for My Panda Kutty 🐼',
+  cardOpeningHeading: 'A Little Surprise for My Panda Kutty 🐼',
+  cardOpeningSubtitle: 'Some feelings are too beautiful to fit into ordinary words. So, I made this little rose-pink world just for you, Harishma.',
+  mainGreeting: 'My Chella Kutty, My Panda Kutty, My Bujji Thango ❤️🐼',
   mainMessageParagraphs: [
-    'My favorite part of an ordinary day is the thought of you.',
-    'You have this beautiful way of making little moments feel special and simple things feel magical. Sometimes, I wish you could see yourself through my eyes, just for a moment, so you could understand how wonderfully unique you are.',
-    'If I could give you one thing in this world, it would be the ability to see yourself the way I see you. You would realize how much happiness your presence can bring and how easily your smile can brighten a day.',
-    'I don’t need a perfect story or a thousand grand gestures. I just love the thought of sharing little moments, silly conversations, unexpected smiles, and beautiful memories with you.',
-    'So, here’s a tiny gift carrying a feeling that words can never completely explain.'
+    'Hey, my sweetest Panda Kutty,',
+    'Do you know how special you are to me, Harishma? Sometimes, I feel like ordinary words are too small to explain how much happiness your presence brings into my life.',
+    'My Chella Kutty, your smile is one of those little things that can make an ordinary day feel beautiful. Just thinking about you brings a different kind of happiness to my heart.',
+    'My Panda Kutty, if I could give you one gift, it would be the chance to see yourself through my eyes. Then you would understand how precious, adorable, and special you are to me.',
+    'My Bujji Thango, I may not always find the perfect words, but I hope you always remember that you deserve kindness, happiness, beautiful memories, and countless reasons to smile.',
+    'You don’t have to be perfect to be precious. You don’t have to do anything extraordinary to be special. Just being your lovely self is enough to make you someone I care about so much.',
+    'So, I created this little rose-pink world just for you, with a tiny letter carrying a big feeling.',
+    'Whenever you open this page, imagine a warm hug, a little smile, and someone lovingly calling you: Panda Kutty… Chella Kutty… Bujji Thango… ❤️'
   ],
-  highlightQuote: 'You are someone truly special to me. And if this little card makes you smile, then it has already done its job. 🌹',
-  signOffPre: 'With love,',
-  signOffName: 'Someone who thinks you’re wonderful. ❤️',
-  specialDate: 'Every single day with you',
-  personalMemory: 'That gentle laughter of yours that always stays in my mind long after we part.',
-  hiddenNoteTitle: 'There’s one more thing…',
-  hiddenNoteMessage: 'Out of all the little surprises life could bring, I’m glad you’re someone I get to know. Keep smiling, keep being yourself, and never forget that someone out there thinks you’re amazing.',
-  finalSurpriseMessage: 'No matter how ordinary today may be, I hope this little gift makes it a little more beautiful. 🌷',
-  galleryMemories: [
-    {
-      id: 'mem-1',
-      title: 'A Beautiful Smile',
-      date: 'A cherished afternoon',
-      caption: 'The way your whole face lights up whenever you laugh.',
-      illustrationType: 'rose'
-    },
-    {
-      id: 'mem-2',
-      title: 'Conversations Under the Stars',
-      date: 'Late quiet hours',
-      caption: 'Talking about everything and nothing until time completely lost its meaning.',
-      illustrationType: 'stargaze'
-    },
-    {
-      id: 'mem-3',
-      title: 'Warmth in the Small Moments',
-      date: 'Just an ordinary day',
-      caption: 'Quiet coffee, gentle thoughts, and the peace of knowing you exist in my life.',
-      illustrationType: 'coffee'
-    },
-    {
-      id: 'mem-4',
-      title: 'Unspoken Feelings',
-      date: 'Every sunset',
-      caption: 'Some connections don’t need loud declarations; they are felt in the calm.',
-      illustrationType: 'heart'
-    }
-  ]
+  highlightQuote: 'You are my sweetest little Panda, and I hope this gift makes your day a little brighter. 🐼🌹',
+  signOffPre: 'With lots of love,',
+  signOffName: 'Your favourite person. 💗🌹',
+  specialDate: 'Always & Forever for Harishma',
+  personalMemory: 'Every sweet moment and warm smile with my Chella Kutty that stays in my heart forever.',
+  hiddenNoteTitle: 'One More Little Note, Bujji Thango 💌',
+  hiddenNoteMessage: 'Out of all the little surprises life could bring, I’m so glad I have you in my world, Harishma. Keep smiling, keep being your sweetest self, and never forget how deeply you are cared for. 🐼❤️',
+  finalSurpriseMessage: 'No matter how ordinary today may be, I hope this little gift makes my Chella Kutty smile. You mean so much to me, Harishma. 🌷✨'
 };
 
-const STORAGE_KEY = 'romantic_gift_card_custom_config_v1';
+const STORAGE_KEY = 'romantic_gift_card_harishma_v2';
 
 export function loadConfig(): GiftCardConfig {
   try {
-    // Check if encoded in URL query or hash
     const params = new URLSearchParams(window.location.search);
     const encoded = params.get('cardData');
     if (encoded) {
@@ -67,7 +39,6 @@ export function loadConfig(): GiftCardConfig {
       return { ...DEFAULT_CONFIG, ...parsed };
     }
 
-    // Otherwise check localStorage
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       return { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
@@ -106,4 +77,3 @@ export function generateShareUrl(config: GiftCardConfig): string {
     return window.location.href;
   }
 }
-

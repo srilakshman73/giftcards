@@ -1,12 +1,3 @@
-export interface GalleryMemory {
-  id: string;
-  title: string;
-  date: string;
-  caption: string;
-  imageUrl?: string;
-  illustrationType?: 'rose' | 'heart' | 'letter' | 'stargaze' | 'coffee' | 'sunset';
-}
-
 export interface GiftCardConfig {
   recipientName: string;
   senderName: string;
@@ -23,7 +14,4 @@ export interface GiftCardConfig {
   hiddenNoteTitle: string;
   hiddenNoteMessage: string;
   finalSurpriseMessage: string;
-  customCoverImage?: string;
-  galleryMemories: GalleryMemory[];
 }
-

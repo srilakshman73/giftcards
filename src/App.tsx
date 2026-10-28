@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { RomanticGiftCard } from './components/RomanticGiftCard';
 import { LoveNote } from './components/LoveNote';
-import { MemoryGallery } from './components/MemoryGallery';
 import { FinalSurprise } from './components/FinalSurprise';
 import { MusicToggle } from './components/MusicToggle';
 import { PetalCanvas } from './components/PetalCanvas';
@@ -51,15 +50,6 @@ export const App: React.FC = () => {
     });
   };
 
-  const handleUpdateMemoryImage = (id: string, dataUrl: string) => {
-    const updatedMemories = config.galleryMemories.map((m) =>
-      m.id === id ? { ...m, imageUrl: dataUrl } : m
-    );
-    const updatedConfig = { ...config, galleryMemories: updatedMemories };
-    setConfig(updatedConfig);
-    saveConfig(updatedConfig);
-  };
-
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#FDF6F7] via-[#FFF9FA] to-[#FAF2F4] text-cherry-deep font-sans selection:bg-rose-200 selection:text-cherry-deep overflow-x-hidden">
       {/* Background Soft Paper & Botanical Glow Texture */}
@@ -74,7 +64,7 @@ export const App: React.FC = () => {
       {/* Persistent Floating Rose Petals Canvas */}
       <PetalCanvas active={true} />
 
-      {/* Floating Ambient Music Controller */}
+      {/* Floating Ambient Music Controller (YouTube: 2NrpwkyoTrI) */}
       <MusicToggle />
 
       {/* Main Experience Layout */}
@@ -98,22 +88,16 @@ export const App: React.FC = () => {
             <HandDrawnRose size={36} />
           </div>
 
-          {/* Luxury Romantic Gift Card */}
+          {/* Luxury Romantic Gift Card - Beautiful Centered Layout */}
           <RomanticGiftCard config={config} />
 
-          {/* Section 5.B: Hidden Love Note */}
+          {/* Section: Hidden Love Note ("One More Little Note, Bujji Thango 💌") */}
           <LoveNote
             title={config.hiddenNoteTitle}
             message={config.hiddenNoteMessage}
           />
 
-          {/* Section 5.D: Memory Gallery Scrapbook */}
-          <MemoryGallery
-            memories={config.galleryMemories}
-            onUpdateMemoryImage={handleUpdateMemoryImage}
-          />
-
-          {/* Section 5.E: Final Surprise Envelope */}
+          {/* Section: Final Surprise Envelope & Actions */}
           <FinalSurprise
             message={config.finalSurpriseMessage}
             onReplay={handleReplay}

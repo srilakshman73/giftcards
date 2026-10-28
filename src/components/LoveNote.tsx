@@ -8,8 +8,8 @@ interface LoveNoteProps {
 }
 
 export const LoveNote: React.FC<LoveNoteProps> = ({
-  title = 'There’s one more thing…',
-  message = 'Out of all the little surprises life could bring, I’m glad you’re someone I get to know. Keep smiling, keep being yourself, and never forget that someone out there thinks you’re amazing.',
+  title = 'One More Little Note, Bujji Thango 💌',
+  message = 'Out of all the little surprises life could bring, I’m so glad I have you in my world, Harishma. Keep smiling, keep being your sweetest self, and never forget how deeply you are cared for. 🐼❤️',
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
