@@ -5,6 +5,15 @@ A luxury romantic digital gift card website inspired by hand-painted botanical a
 
 ---
 
+## 🌐 Live Website & Deployment
+
+- **Live URL**: [https://snappy-bayou-vxown8e.tmp.now](https://snappy-bayou-vxown8e.tmp.now)
+- **Claim on Vercel**: [Claim this deployment to your personal Vercel dashboard](https://vercel.com/claim-deployment?code=f991b7ed-d3a9-447b-990a-84dd61701f81)
+- **GitHub Repository**: [https://github.com/srilakshman73/giftcard](https://github.com/srilakshman73/giftcard)
+- **Branch**: `main`
+
+---
+
 ## ✨ Features & Experiences
 
 1. **The Opening Screen Surprise 💌**
