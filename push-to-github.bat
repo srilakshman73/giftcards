@@ -2,12 +2,12 @@
 setlocal
 cd /d "%~dp0"
 set "PATH=C:\Users\Sri Lakshman\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;%PATH%"
-echo Pushing "giftcard" to https://github.com/srilakshman73/giftcard.git ...
+echo Pushing "giftcards" to https://github.com/srilakshman73/giftcards.git ...
 git push -u origin main
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo ==========================================================
-    echo [SUCCESS] Pushed all code to GitHub: https://github.com/srilakshman73/giftcard
+    echo [SUCCESS] Pushed all code to GitHub: https://github.com/srilakshman73/giftcards
     echo ==========================================================
 ) else (
     echo.

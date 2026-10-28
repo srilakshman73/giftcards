@@ -10,7 +10,7 @@ A luxury romantic digital gift card website inspired by hand-painted botanical a
 - **Live URL**: [https://nimble-tundra-9w5lf0r.tmp.now](https://nimble-tundra-9w5lf0r.tmp.now)
 - **Claim on Vercel**: [Claim this deployment to your personal Vercel dashboard](https://vercel.com/claim-deployment?code=eec2811b-a22e-4e88-8f7d-ed47f10dc4fa)
 - **Song**: [Adiye (2NrpwkyoTrI)](https://youtu.be/2NrpwkyoTrI?si=1feIsKT3qsvdPRXZ)
-- **GitHub Repository**: [https://github.com/srilakshman73/giftcard](https://github.com/srilakshman73/giftcard)
+- **GitHub Repository**: [https://github.com/srilakshman73/giftcards](https://github.com/srilakshman73/giftcards)
 - **Branch**: `main`
 
 ---
