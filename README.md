@@ -31,6 +31,7 @@ A luxury romantic digital gift card website inspired by hand-painted botanical a
      - Sincere sign-off: *“With love, Someone who thinks you're wonderful. ❤️”*
 
 3. **Interactive Romantic Experiences 💫**
+   - **Romantic YouTube Background Music Player**: Official YouTube IFrame Player API integration for the romantic song *“Adiye”* (ID: `2NrpwkyoTrI`). Features play, pause, mute/unmute, animated equalizer bars, responsive glassmorphism controls, zero autoplay (starts on user click), direct YouTube link, and an automatic gentle acoustic lullaby fallback if YouTube embedding restrictions apply.
    - **Floating Rose Petals**: GPU-accelerated canvas animation with gentle natural drift, swaying leaves, and reduced-motion support.
    - **Web Audio API Romantic Music Box**: Gentle, warm celesta and piano arpeggios synthesized directly in-browser. Zero external dependencies, never fails or blocks, and respects autoplay policies with an elegant top-right toggle.
    - **Send a Little Love ❤️**: Interactive button with heart burst particle effects, love counter, and sweet confirmation toasts.
