@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Volume2, VolumeX, Music, Play, Pause, ExternalLink, Sparkles, AlertCircle } from 'lucide-react';
 
 const YOUTUBE_VIDEO_ID = '2NrpwkyoTrI';
@@ -52,16 +52,52 @@ export const MusicToggle: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isEmbedBlocked, setIsEmbedBlocked] = useState(false);
-  const [showHint, setShowHint] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
 
   const playerRef = useRef<YTPlayer | null>(null);
+  const hasUserPausedRef = useRef(false);
 
-  // Initialize YouTube IFrame API strictly for 2NrpwkyoTrI
+  // Attempt to start playback with sound
+  const attemptPlayback = useCallback(() => {
+    if (hasUserPausedRef.current) return;
+    if (playerRef.current && isReady) {
+      try {
+        playerRef.current.unMute();
+        playerRef.current.setVolume(85);
+        playerRef.current.playVideo();
+      } catch (err) {
+        console.warn('Playback attempt error:', err);
+      }
+    }
+  }, [isReady]);
+
+  // One-time interaction handler for the entire page
+  const handlePageInteraction = useCallback(() => {
+    if (hasUserPausedRef.current) return;
+    if (!isPlaying && !isEmbedBlocked) {
+      attemptPlayback();
+    }
+  }, [isPlaying, isEmbedBlocked, attemptPlayback]);
+
+  // Global listener for first tap/click anywhere on the page
   useEffect(() => {
-    const hintTimer = setTimeout(() => {
-      setShowHint(true);
-    }, 3500);
+    const handleFirstTouchOrClick = () => {
+      handlePageInteraction();
+    };
 
+    window.addEventListener('click', handleFirstTouchOrClick, { passive: true });
+    window.addEventListener('touchstart', handleFirstTouchOrClick, { passive: true });
+    window.addEventListener('keydown', handleFirstTouchOrClick, { passive: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstTouchOrClick);
+      window.removeEventListener('touchstart', handleFirstTouchOrClick);
+      window.removeEventListener('keydown', handleFirstTouchOrClick);
+    };
+  }, [handlePageInteraction]);
+
+  // Initialize YouTube IFrame Player API
+  useEffect(() => {
     const initPlayer = () => {
       if (!window.YT || !window.YT.Player) return;
 
@@ -71,7 +107,7 @@ export const MusicToggle: React.FC = () => {
           width: '200',
           height: '200',
           playerVars: {
-            autoplay: 0,
+            autoplay: 1, // Immediately attempt autoplay
             controls: 0,
             disablekb: 1,
             fs: 0,
@@ -85,12 +121,29 @@ export const MusicToggle: React.FC = () => {
           events: {
             onReady: (event) => {
               setIsReady(true);
-              event.target.setVolume(80);
+              event.target.setVolume(85);
+              // Immediately attempt audible autoplay upon player ready
+              try {
+                event.target.playVideo();
+              } catch {
+                setAutoplayBlocked(true);
+              }
+
+              // Check if playback successfully transitioned to playing after 1.5s
+              setTimeout(() => {
+                if (window.YT && playerRef.current) {
+                  const state = playerRef.current.getPlayerState();
+                  if (state !== window.YT.PlayerState.PLAYING) {
+                    setAutoplayBlocked(true);
+                  }
+                }
+              }, 1500);
             },
             onStateChange: (event) => {
               if (window.YT) {
                 if (event.data === window.YT.PlayerState.PLAYING) {
                   setIsPlaying(true);
+                  setAutoplayBlocked(false);
                 } else if (
                   event.data === window.YT.PlayerState.PAUSED ||
                   event.data === window.YT.PlayerState.ENDED
@@ -100,15 +153,15 @@ export const MusicToggle: React.FC = () => {
               }
             },
             onError: (event) => {
-              // YouTube error codes: 100, 101, 150 mean video cannot be embedded
-              console.warn('YouTube playback error or restriction (code ' + event.data + '). Showing direct YouTube link.');
+              console.warn('YouTube error code: ' + event.data);
+              // Code 100, 101, 150 = owner restricts embedding
               setIsEmbedBlocked(true);
               setIsPlaying(false);
             },
           },
         });
       } catch (err) {
-        console.warn('Failed to initialize YouTube IFrame Player:', err);
+        console.warn('Failed to construct YouTube player:', err);
         setIsEmbedBlocked(true);
       }
     };
@@ -131,20 +184,19 @@ export const MusicToggle: React.FC = () => {
     }
 
     return () => {
-      clearTimeout(hintTimer);
       if (playerRef.current) {
         try {
           playerRef.current.destroy();
         } catch {
-          // ignore
+          // ignore cleanup errors
         }
       }
     };
   }, []);
 
-  // Handle Play/Pause strictly for this YouTube player
-  const handleTogglePlay = () => {
-    setShowHint(false);
+  // Handle Play/Pause Button Toggle
+  const handleTogglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
 
     if (isEmbedBlocked) {
       window.open(YOUTUBE_VIDEO_URL, '_blank', 'noopener,noreferrer');
@@ -152,17 +204,19 @@ export const MusicToggle: React.FC = () => {
     }
 
     if (!playerRef.current || !isReady) {
-      console.warn('YouTube player not ready yet. Retrying...');
       return;
     }
 
     try {
       if (isPlaying) {
+        hasUserPausedRef.current = true;
         playerRef.current.pauseVideo();
         setIsPlaying(false);
       } else {
+        hasUserPausedRef.current = false;
         playerRef.current.playVideo();
         setIsPlaying(true);
+        setAutoplayBlocked(false);
       }
     } catch {
       setIsEmbedBlocked(true);
@@ -188,28 +242,37 @@ export const MusicToggle: React.FC = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex flex-col items-end gap-2 max-w-[90vw]">
-      {/* Hidden YouTube IFrame Container */}
+    <div className="fixed top-4 right-4 z-50 flex flex-col items-end gap-2 max-w-[92vw]">
+      {/* Hidden YouTube IFrame Container with Autoplay Permission */}
       <div
         className="fixed -top-96 -left-96 w-1 h-1 opacity-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
-        <div id="youtube-audio-iframe" />
+        <iframe
+          id="youtube-audio-iframe"
+          title="Romantic Background Music"
+          src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&controls=0&disablekb=1&fs=0&loop=1&playlist=${YOUTUBE_VIDEO_ID}&modestbranding=1&rel=0&playsinline=1`}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          className="w-1 h-1"
+        />
       </div>
 
-      {/* Gentle helper bubble */}
-      {showHint && !isPlaying && !isEmbedBlocked && (
+      {/* Polite prompt shown ONLY when browser restricts audible autoplay before interaction */}
+      {!isPlaying && !isEmbedBlocked && autoplayBlocked && (
         <div
           role="status"
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-rose-200 text-xs text-cherry-deep shadow-lg animate-bounce"
+          onClick={handlePageInteraction}
+          className="group cursor-pointer flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-rose-500/95 via-cherry/90 to-rose-600/95 text-white text-xs font-serif shadow-luxury border border-champagne/60 backdrop-blur-md animate-bounce hover:scale-105 transition-all select-none"
         >
-          <Sparkles className="w-3.5 h-3.5 text-champagne-dark animate-pulse" />
-          <span>Tap to play our song “{SONG_TITLE}” ♫</span>
+          <Sparkles className="w-3.5 h-3.5 text-champagne animate-pulse shrink-0" />
+          <span className="font-semibold tracking-wide">
+            Tap anywhere to hear our song, Chella Kutty ❤️
+          </span>
         </div>
       )}
 
       {/* Romantic Player Bar */}
-      <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-champagne/60 rounded-full p-1.5 pr-3 shadow-luxury transition-all duration-300 hover:shadow-gold-glow">
+      <div className="flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-champagne/60 rounded-full p-1.5 pr-3 shadow-luxury transition-all duration-300 hover:shadow-gold-glow">
         {/* Play/Pause Button */}
         <button
           onClick={handleTogglePlay}
@@ -223,7 +286,7 @@ export const MusicToggle: React.FC = () => {
         >
           {isPlaying ? (
             <>
-              {/* Equalizer bars */}
+              {/* Equalizer animation */}
               <div className="flex items-end gap-0.5 h-3.5 w-3.5 mr-0.5">
                 <span className="w-0.5 h-full bg-white rounded-full animate-[pulse_0.7s_ease-in-out_infinite]" />
                 <span className="w-0.5 h-2 bg-white rounded-full animate-[pulse_1.1s_ease-in-out_infinite_0.15s]" />
